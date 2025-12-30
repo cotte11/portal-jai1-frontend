@@ -12,6 +12,9 @@ import { AdminClientDetail } from './components/admin-client-detail/admin-client
 import { UserMessages } from './components/user-messages/user-messages';
 import { ForgotPassword } from './components/forgot-password/forgot-password';
 import { ResetPassword } from './components/reset-password/reset-password';
+import { Chatbot } from './components/chatbot/chatbot';
+import { MainLayout } from './components/main-layout/main-layout';
+import { Profile } from './components/profile/profile';
 
 
 export const routes: Routes = [
@@ -38,26 +41,19 @@ export const routes: Routes = [
   canActivate: [adminGuard]
   },
   
-  // Protected user routes
+  // Protected user routes - wrapped in MainLayout with sidebar
   { 
-    path: 'dashboard', 
-    component: Dashboard,
-    canActivate: [authGuard]
-  },
-  { 
-    path: 'tax-form', 
-    component: TaxForm,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'documents',
-    component: DocumentUpload,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'messages',
-    component: UserMessages,
-    canActivate: [authGuard]
+    path: '',
+    component: MainLayout,
+    canActivate: [authGuard],
+    children: [
+      { path: 'dashboard', component: Dashboard },
+      { path: 'tax-form', component: TaxForm },
+      { path: 'documents', component: DocumentUpload },
+      { path: 'messages', component: UserMessages },
+      { path: 'chatbot', component: Chatbot },
+      { path: 'profile', component: Profile }
+    ]
   },
 
   { path: '**', redirectTo: '/login' }
