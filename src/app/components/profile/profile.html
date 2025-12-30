@@ -10,6 +10,10 @@
     <div class="member-card">
       <div class="card-header">
         <div class="header-pattern"></div>
+        <div class="member-badge">
+          <span>🏆</span>
+          <span>Miembro JAI1</span>
+        </div>
         
         <!-- Profile Picture -->
         <div class="profile-picture-container">
@@ -33,13 +37,14 @@
             hidden
           />
           @if (profilePicture) {
-            <button class="btn-remove-picture" (click)="removeProfilePicture()">✕</button>
+            <button class="btn-remove-picture" (click)="removeProfilePicture(); $event.stopPropagation()">✕</button>
           }
         </div>
       </div>
 
       <div class="card-body">
         <h1 class="user-name">{{ userName || 'Usuario' }}</h1>
+        <p class="member-since">{{ formatMemberSince() }}</p>
         
         @if (dni) {
           <p class="user-dni">DNI: {{ maskDNI(dni) }}</p>
@@ -51,7 +56,7 @@
             <span>Identidad validada</span>
           } @else {
             <span class="badge-icon">⏳</span>
-            <span>Verificación pendiente</span>
+            <span>Completá tu perfil</span>
           }
         </div>
       </div>
@@ -205,12 +210,20 @@
       </div>
     </div>
 
-    <!-- Actions -->
-    <div class="actions-section">
-      <button class="btn-action" (click)="goBack()">
-        <span>← Volver al inicio</span>
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button class="action-btn" (click)="goBack()">
+        <span class="action-icon">🏠</span>
+        <span>Ir al Inicio</span>
+      </button>
+      <button class="action-btn" routerLink="/tax-form">
+        <span class="action-icon">📝</span>
+        <span>Mi Declaración</span>
+      </button>
+      <button class="action-btn" routerLink="/documents">
+        <span class="action-icon">📁</span>
+        <span>Documentos</span>
       </button>
     </div>
   }
 </div>
-

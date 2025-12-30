@@ -57,6 +57,22 @@
   pointer-events: none;
 }
 
+.member-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 /* Profile Picture */
 .profile-picture-container {
   position: absolute;
@@ -156,7 +172,14 @@
   font-size: 26px;
   font-weight: 700;
   color: #1D345D;
+  margin: 0 0 4px;
+}
+
+.member-since {
+  font-size: 13px;
+  color: #94a3b8;
   margin: 0 0 8px;
+  font-weight: 500;
 }
 
 .user-dni {
@@ -472,6 +495,45 @@
   color: #1D345D;
 }
 
+/* ==================== QUICK ACTIONS ==================== */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: #1D345D;
+}
+
+.action-btn:hover {
+  border-color: #1D345D;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(29, 52, 93, 0.1);
+}
+
+.action-icon {
+  font-size: 28px;
+}
+
+.action-btn span:last-child {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 540px) {
   .profile-page {
@@ -505,6 +567,20 @@
 
   .info-section {
     padding: 16px;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .action-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 16px;
+  }
+
+  .action-icon {
+    font-size: 24px;
   }
 }
 
